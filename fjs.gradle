@@ -11,10 +11,12 @@ ext{
 
     version = [
             androidSupportSdkVersion:"28.0.0",
+            constraintLayoutVersion:"1.1.3"
 
     ]
 
     dependencies = [
             "appcompat-v7":"com.android.support:appcompat-v7:${version["androidSupportSdkVersion"]}",
+            "constraint-layout":"com.android.support.constraint:constraint-layout:${version["constraintLayoutVersion"]}"
     ]
 }
