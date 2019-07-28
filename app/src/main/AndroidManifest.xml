@@ -9,6 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <service
+            android:name="com.yds.jianshu.onepixel.OnePixelService"
+            android:enabled="true"
+            android:exported="false"
+            android:process=":one_pixel_service"
+            ></service>
+
         <activity android:name="com.yds.jianshu.mobile.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,12 +23,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.yds.jianshu.onepixel.OnePixelActivity"
+        <activity
+            android:name="com.yds.jianshu.onepixel.OnePixelActivity"
             android:excludeFromRecents="true"
             android:launchMode="singleTask"
             android:taskAffinity="com.yds.task"
-            android:theme="@style/OnePixelActivity">
-        </activity>
+            android:theme="@style/OnePixelActivity"></activity>
     </application>
 
 </manifest>
