@@ -8,5 +8,5 @@
 
 [【Android组件开发】统一配置文件](https://blog.csdn.net/u013293125/article/details/97171466)
 
-
+[【Android实例】用设计原则来重构1像素保活代码](https://www.jianshu.com/p/98b30c2254b5)
 
