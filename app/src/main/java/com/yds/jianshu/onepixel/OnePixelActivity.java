@@ -8,11 +8,24 @@ import android.view.Gravity;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.yds.jianshu.manager.OnePixelActivityManager;
+
 public class OnePixelActivity extends Activity{
     private static final String TAG = "[OnePixelActivity]";
+    private OnePixelActivityManager manager;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setWindowAttributes();
+        initData();
+
+        Log.e(TAG,"onCreate");
+    }
+    private void initData(){
+        manager = new OnePixelActivityManager();
+        manager.registerActivityReference(this);//将引用传给OnePixelActivityManager
+    }
+    private void setWindowAttributes(){
         Window window = getWindow();
         window.setGravity(Gravity.LEFT|Gravity.TOP);
         WindowManager.LayoutParams params = window.getAttributes();
@@ -21,12 +34,7 @@ public class OnePixelActivity extends Activity{
         params.height = 1;
         params.width = 1;
         window.setAttributes(params);
-        OnePixelManager manager = new OnePixelManager();
-        manager.setKeepAliveReference(this);//将引用传给OnePixelManager
-
-        Log.e(TAG,"onCreate");
     }
-
     @Override
     protected void onDestroy() {
         super.onDestroy();

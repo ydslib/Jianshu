@@ -4,8 +4,11 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 
+import com.yds.jianshu.manager.OnePixelReceiverManager;
+import com.yds.jianshu.manager.ReceiverManager;
+
 public class OnePixelService extends Service {
-    OnePixelManager manager;
+    private ReceiverManager manager;
     public OnePixelService() {
     }
 
@@ -17,13 +20,13 @@ public class OnePixelService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        manager = new OnePixelManager();
-        manager.registerOnePixelReceiver(this);//注册广播接收者
+        manager = new OnePixelReceiverManager();
+        manager.register(this);//注册广播接收者
         return START_STICKY;
     }
 
     @Override
     public void onDestroy() {
-        manager.unregisterOnePixelReceiver(this);
+        manager.unregister(this);
     }
 }
