@@ -13,21 +13,11 @@ import com.yds.jianshu.utils.widget.constance.CommonImageType;
 
 public class MainActivity extends AppCompatActivity{
     private static final String TAG = "[MainActivity]";
-    private TextView tv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initData();
-        tv = findViewById(R.id.tv);
-        tv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                FToast.makeText(MainActivity.this,"调用测试").show();
-
-                FToast.makeText(MainActivity.this,"调用测试", CommonImageType.ERROR).show();
-            }
-        });
     }
     private void initData(){
         startOnePixelService();
