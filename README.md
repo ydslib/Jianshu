@@ -10,3 +10,6 @@
 
 [【Android实例】用设计原则来重构1像素保活代码](https://www.jianshu.com/p/98b30c2254b5)
 
+[【项目FJU】自定义Toast](https://www.jianshu.com/p/1691ab730d9c)
+
+
