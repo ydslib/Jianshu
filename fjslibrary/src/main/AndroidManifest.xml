@@ -1,7 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.yds.jianshu" >
+    package="com.yds.jianshu"
+    >
     <application
-        android:name=".FJUApplication">
+        android:name=".FJUApplication"
+        >
 
     </application>
 </manifest>

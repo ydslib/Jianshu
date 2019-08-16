@@ -1,1 +1,1 @@
-include ':app', ':fjulibrary', ':mainmodule'
+include ':app', ':fjslibrary', ':mainmodule', ':fjstest'
