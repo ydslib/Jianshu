@@ -7,4 +7,9 @@ import android.app.Application;
  * on 2019/8/13.
  */
 public class MainApplication extends Application {
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
+    }
 }

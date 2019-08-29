@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.yds.mainmodule.mobile.MainActivity">
+    tools:context="com.yds.mainmodule.mobile.views.MainActivity">
 
     <android.support.v4.view.ViewPager
         android:id="@+id/bottom_tab_viewpager"

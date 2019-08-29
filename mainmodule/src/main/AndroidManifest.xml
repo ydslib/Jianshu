@@ -18,7 +18,7 @@
             android:process=":one_pixel_service"
             ></service>
 
-        <activity android:name="com.yds.mainmodule.mobile.MainActivity">
+        <activity android:name="com.yds.mainmodule.mobile.views.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
