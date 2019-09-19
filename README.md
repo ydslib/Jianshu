@@ -14,4 +14,10 @@
 
 [【项目FJU】Fragment+ViewPager+TabLayout制作底部导航](https://www.jianshu.com/p/094536ff3a58)
 
+[【项目FJU】MVP之BaseMVP基础框架实例](https://www.jianshu.com/p/b58a0815d1a6)
+
+[【项目FJU】构建Library模块](https://www.jianshu.com/p/2f4dd6557ab4)
+
+
+
 
