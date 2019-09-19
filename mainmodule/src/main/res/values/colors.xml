@@ -5,4 +5,8 @@
     <color name="colorAccent">#D81B60</color>
 
     <color name="f_font_light_gray">#DFDFDF</color>
+
+    <color name="f_font_tabbar_text_selected">#EA6F5A</color>
+    <color name="f_font_tabbar_text_default">#C3C3C3</color>
+    <color name="f_line_gray">#B9B8B8</color>
 </resources>

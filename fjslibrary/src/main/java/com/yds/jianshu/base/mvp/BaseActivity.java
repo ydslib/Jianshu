@@ -1,15 +1,16 @@
 package com.yds.jianshu.base.mvp;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Window;
 
 /**
  * Created by yds
  * on 2019/8/3.
  */
-public abstract class BaseActivity<P extends IBasePresenter> extends Activity implements IBaseView{
+public abstract class BaseActivity<P extends IBasePresenter> extends AppCompatActivity implements IBaseView{
     protected P mPresenter;
     protected abstract void initLayout(@Nullable Bundle savedInstanceState);
     protected abstract void initViews();
@@ -21,6 +22,7 @@ public abstract class BaseActivity<P extends IBasePresenter> extends Activity im
     protected void onCreate(@Nullable Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
         initLayout(saveInstanceState);
+        getSupportActionBar().hide();
         mPresenter = setPresenter();
         if(mPresenter!=null){
             mPresenter.attach(this);

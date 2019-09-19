@@ -12,10 +12,9 @@ import com.yds.mainmodule.R;
 
 /**
  * Created by yds
- * on 2019/8/13.
+ * on 2019/9/18.
  */
-public class HomeFragment extends Fragment {
-
+public class AttentionFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +23,7 @@ public class HomeFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.main_module_fragment_home,container,false);
+        View view = inflater.inflate(R.layout.main_module_fragment_attention,container,false);
         return view;
     }
 }

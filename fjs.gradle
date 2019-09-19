@@ -16,6 +16,7 @@ ext{
             junitVersion:"4.12",
             runnerVersion:"1.0.2",
             espressoCoreVersion:"3.0.2",
+            designVersion:"28.0.0",
     ]
 
     dependencies = [
@@ -24,6 +25,7 @@ ext{
             "rxjava":"io.reactivex.rxjava2:rxjava:${version["rxJavaVersion"]}",
             "junit":"junit:junit:${version["junitVersion"]}",
             "runner":"com.android.support.test:runner:${version["runnerVersion"]}",
-            "espresso-core":"com.android.support.test.espresso:espresso-core:${version["espressoCoreVersion"]}"
+            "espresso-core":"com.android.support.test.espresso:espresso-core:${version["espressoCoreVersion"]}",
+            "design":"com.android.support:design:${version["designVersion"]}"
     ]
 }
