@@ -12,4 +12,6 @@
 
 [【项目FJU】自定义Toast](https://www.jianshu.com/p/1691ab730d9c)
 
+[【项目FJU】Fragment+ViewPager+TabLayout制作底部导航](https://www.jianshu.com/p/094536ff3a58)
+
 
