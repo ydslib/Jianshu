@@ -14,6 +14,7 @@
         android:layout_height="20dp"
         tools:src="@drawable/icon_tabbar_subscription_active"/>
     <TextView
+        android:layout_marginTop="5dp"
         android:id="@+id/home_item_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -21,6 +22,6 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/home_item_iv"
         android:textColor="@drawable/tabbar_subscription_text_selecter"
-        android:textSize="10sp"
+        android:textSize="8sp"
         tools:text="首页"/>
 </android.support.constraint.ConstraintLayout>
