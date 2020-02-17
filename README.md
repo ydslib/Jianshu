@@ -18,7 +18,7 @@
 
 [【项目FJU】构建Library模块](https://www.jianshu.com/p/2f4dd6557ab4)
 
-【项目FJU】沉浸式状态栏简单使用](https://www.jianshu.com/p/d678026fabf1)
+[【项目FJU】沉浸式状态栏简单使用](https://www.jianshu.com/p/d678026fabf1)
 
 
 
