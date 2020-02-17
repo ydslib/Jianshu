@@ -6,6 +6,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 
+import com.yds.jianshu.utils.statusbar.StatusBarUtil;
+
 /**
  * Created by yds
  * on 2019/8/3.
@@ -21,15 +23,19 @@ public abstract class BaseActivity<P extends IBasePresenter> extends AppCompatAc
     @Override
     protected void onCreate(@Nullable Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         initLayout(saveInstanceState);
-        getSupportActionBar().hide();
         mPresenter = setPresenter();
         if(mPresenter!=null){
             mPresenter.attach(this);
         }
         initViews();
         initEvents();
-
+        StatusBarUtil.setRootViewFitsSystemWindows(this,true);
+        StatusBarUtil.setTranslucentStatus(this);
+        if (!StatusBarUtil.setStatusBarDarkTheme(this,true)){
+            StatusBarUtil.setStatusBarColor(this,0x55000000);
+        }
     }
     @Override
     protected void onDestroy() {

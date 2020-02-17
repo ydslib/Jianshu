@@ -6,6 +6,9 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <!--设置无标题-->
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
     </style>
     <!--设置背景-->
     <style name="OnePixelActivity" parent="android:Theme.Holo.Light.NoActionBar">//无标题

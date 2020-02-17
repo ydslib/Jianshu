@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.yds.jianshu.base.mvp.BaseActivity;
 import com.yds.jianshu.utils.ObjectUtil;
+import com.yds.jianshu.utils.statusbar.StatusBarUtil;
 import com.yds.mainmodule.R;
 import com.yds.mainmodule.adapter.HomeTabFragmentPagerAdapter;
 import com.yds.mainmodule.fragment.AttentionFragment;
@@ -54,6 +55,12 @@ public class MainActivity extends BaseActivity<MainContract.IMainPresenter> impl
     protected void initViews() {
         mBottomTabLayout = findViewById(R.id.main_bottom_tabLayout);
         mBottomViewPager = findViewById(R.id.bottom_tab_viewpager);
+    }
+
+    @Override
+    protected void onCreate(@Nullable Bundle saveInstanceState) {
+        super.onCreate(saveInstanceState);
+        StatusBarUtil.setRootViewFitsSystemWindows(this,false);
     }
 
     @Override

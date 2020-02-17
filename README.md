@@ -18,6 +18,8 @@
 
 [【项目FJU】构建Library模块](https://www.jianshu.com/p/2f4dd6557ab4)
 
+[【项目FJU】构建Library模块](https://www.jianshu.com/p/d678026fabf1)
+
 
 
 
