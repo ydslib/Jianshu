@@ -12,10 +12,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.yds.jianshu.base.mvp.BaseActivity;
-import com.yds.jianshu.utils.ObjectUtil;
 import com.yds.jianshu.utils.statusbar.StatusBarUtil;
 import com.yds.mainmodule.R;
-import com.yds.mainmodule.adapter.HomeTabFragmentPagerAdapter;
+import com.yds.jianshu.adapter.BaseTabFragmentPagerAdapter;
 import com.yds.mainmodule.fragment.AttentionFragment;
 import com.yds.mainmodule.fragment.HomeFragment;
 import com.yds.mainmodule.fragment.JevelFragment;
@@ -74,7 +73,7 @@ public class MainActivity extends BaseActivity<MainContract.IMainPresenter> impl
         mFragmentList.add(new NotificationFragment());
         mFragmentList.add(new MeFragment());
 
-        mAdapter = new HomeTabFragmentPagerAdapter(getSupportFragmentManager(), mFragmentList);
+        mAdapter = new BaseTabFragmentPagerAdapter(getSupportFragmentManager(), mFragmentList);
         mBottomViewPager.setAdapter(mAdapter);
         mBottomViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mBottomTabLayout));
         mBottomTabLayout.setOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mBottomViewPager));
