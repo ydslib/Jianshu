@@ -40,6 +40,7 @@
         app:tabIndicatorHeight="0dp"
         app:tabMode="fixed"
         app:tabSelectedTextColor="@color/f_font_tabbar_text_selected"
+        app:tabRippleColor = "@android:color/transparent"
         app:tabTextColor="@color/f_font_tabbar_text_default">
 
     </android.support.design.widget.TabLayout>
