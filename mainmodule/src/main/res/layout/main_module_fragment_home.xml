@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:fitsSystemWindows="true"
-    android:orientation="vertical">
-    <LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="25dp"
-        />
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <LinearLayout
+        android:layout_height="wrap_content"
+        app:theme="@style/ToolbarTheme"
+        android:fitsSystemWindows="true"
+        android:background="#ffffff">
+        <android.support.design.widget.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            app:contentScrim="#ffffff"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
             <com.yds.jianshu.widget.SearchBarLayout
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -23,24 +22,24 @@
                 android:orientation="horizontal"
                 android:background="@drawable/shape_search"
                 android:gravity="center"
-                android:layout_height="30dp"/>
-            <android.support.design.widget.TabLayout
-                android:id="@+id/tab_layout"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                app:tabIndicatorHeight="1dp"
-                app:tabIndicatorColor="#F84408"
-                app:tabIndicatorFullWidth="false"
-                app:tabRippleColor = "@android:color/transparent"
-                >
-            </android.support.design.widget.TabLayout>
-
-            <android.support.v4.view.ViewPager
-                android:id="@+id/viewpager"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="30dp"
+                app:layout_collapseMode="parallax"
                 />
-        </LinearLayout>
-    </ScrollView>
+        </android.support.design.widget.CollapsingToolbarLayout>
 
-</LinearLayout>
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:tabIndicatorHeight="1dp"
+            app:tabIndicatorColor="#F84408"
+            app:tabIndicatorFullWidth="false"
+            app:tabRippleColor = "@android:color/transparent"/>
+    </android.support.design.widget.AppBarLayout>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        />
+</android.support.design.widget.CoordinatorLayout>

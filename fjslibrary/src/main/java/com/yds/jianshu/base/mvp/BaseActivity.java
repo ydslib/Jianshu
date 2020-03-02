@@ -1,10 +1,12 @@
 package com.yds.jianshu.base.mvp;
 
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
+import android.view.WindowManager;
 
 import com.yds.jianshu.utils.statusbar.StatusBarUtil;
 
@@ -31,11 +33,14 @@ public abstract class BaseActivity<P extends IBasePresenter> extends AppCompatAc
         }
         initViews();
         initEvents();
-        StatusBarUtil.setRootViewFitsSystemWindows(this,true);
-        StatusBarUtil.setTranslucentStatus(this);
-        if (!StatusBarUtil.setStatusBarDarkTheme(this,true)){
-            StatusBarUtil.setStatusBarColor(this,0x55000000);
-        }
+//        StatusBarUtil.setRootViewFitsSystemWindows(this,true);
+//        StatusBarUtil.setTranslucentStatus(this);
+//        StatusBarUtil.setRootView(this);
+        StatusBarUtil.setStatusBarColor(this,0xffffff);
+        StatusBarUtil.setStatusBarDarkTheme(this,true);
+//        if (!StatusBarUtil.setStatusBarDarkTheme(this,true)){
+//            StatusBarUtil.setStatusBarColor(this,0x55000000);
+//        }
     }
     @Override
     protected void onDestroy() {

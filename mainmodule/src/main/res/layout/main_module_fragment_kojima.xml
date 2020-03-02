@@ -6,6 +6,6 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:text="小岛"
-        tools:gravity="center"/>
+        android:text="小岛"
+        android:gravity="center"/>
 </android.support.constraint.ConstraintLayout>

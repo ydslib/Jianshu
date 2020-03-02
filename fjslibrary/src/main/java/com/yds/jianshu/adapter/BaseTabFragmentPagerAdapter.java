@@ -3,6 +3,7 @@ package com.yds.jianshu.adapter;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+
 import java.util.List;
 
 /**
@@ -15,6 +16,7 @@ public class BaseTabFragmentPagerAdapter extends FragmentPagerAdapter {
         super(fm);
         this.mFragmentList = mFragmentList;
     }
+
 
     @Override
     public Fragment getItem(int position) {

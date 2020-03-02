@@ -56,11 +56,11 @@ public class HomeFragment extends Fragment {
         mFragmentList.add(new ThematicFragment());
         mFragmentList.add(new SerialFragment());
 
-        mAdapter = new BaseTabFragmentPagerAdapter(getActivity().getSupportFragmentManager(),mFragmentList);
+        mAdapter = new BaseTabFragmentPagerAdapter(getChildFragmentManager(),mFragmentList);
         mViewPager.setAdapter(mAdapter);
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
-        mTabLayout.setOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
+        mTabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
     }
 }
