@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 
 import com.yds.mainmodule.onepixel.OnePixelReceiver;
-import com.yds.jianshu.utils.ObjectUtil;
+import com.yds.jianshulib.utils.ObjectUtil;
 
 /**
  * Created by yds

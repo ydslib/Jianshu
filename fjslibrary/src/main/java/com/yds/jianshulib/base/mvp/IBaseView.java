@@ -1,4 +1,4 @@
-package com.yds.jianshu.base.mvp;
+package com.yds.jianshulib.base.mvp;
 
 import android.content.Context;
 

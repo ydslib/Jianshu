@@ -1,4 +1,4 @@
-package com.yds.jianshu.base.mvp;
+package com.yds.jianshulib.base.mvp;
 
 /**
  * Created by yds

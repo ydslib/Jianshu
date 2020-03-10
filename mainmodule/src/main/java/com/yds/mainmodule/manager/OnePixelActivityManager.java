@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.yds.mainmodule.onepixel.OnePixelActivity;
-import com.yds.jianshu.utils.ObjectUtil;
+import com.yds.jianshulib.utils.ObjectUtil;
 
 import java.lang.ref.WeakReference;
 

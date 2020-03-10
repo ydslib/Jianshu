@@ -1,4 +1,4 @@
-package com.yds.jianshu;
+package com.yds.jianshulib;
 
 import android.app.Application;
 

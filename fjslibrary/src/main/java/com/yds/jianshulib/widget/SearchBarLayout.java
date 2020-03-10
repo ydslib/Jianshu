@@ -1,12 +1,12 @@
-package com.yds.jianshu.widget;
+package com.yds.jianshulib.widget;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 
-import com.yds.jianshu.R;
+import com.yds.jianshulib.R;
 
 /**
  * Created by yds

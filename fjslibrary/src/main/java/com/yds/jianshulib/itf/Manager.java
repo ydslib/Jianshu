@@ -1,4 +1,4 @@
-package com.yds.jianshu.itf;
+package com.yds.jianshulib.itf;
 
 /**
  * Created by yds

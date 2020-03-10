@@ -1,4 +1,4 @@
-package com.yds.jianshu.utils;
+package com.yds.jianshulib.utils;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;

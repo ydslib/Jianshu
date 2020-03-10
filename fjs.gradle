@@ -20,12 +20,12 @@ ext{
     ]
 
     dependencies = [
-            "appcompat-v7":"com.android.support:appcompat-v7:${version["androidSupportSdkVersion"]}",
-            "constraint-layout":"com.android.support.constraint:constraint-layout:${version["constraintLayoutVersion"]}",
+            "appcompat-v7": 'androidx.appcompat:appcompat:1.0.0',
+            "constraint-layout": 'androidx.constraintlayout:constraintlayout:1.1.3',
             "rxjava":"io.reactivex.rxjava2:rxjava:${version["rxJavaVersion"]}",
             "junit":"junit:junit:${version["junitVersion"]}",
-            "runner":"com.android.support.test:runner:${version["runnerVersion"]}",
-            "espresso-core":"com.android.support.test.espresso:espresso-core:${version["espressoCoreVersion"]}",
-            "design":"com.android.support:design:${version["designVersion"]}"
+            "runner": 'androidx.test:runner:1.1.0',
+            "espresso-core": 'androidx.test.espresso:espresso-core:3.1.0',
+            "design": 'com.google.android.material:material:1.0.0'
     ]
 }

@@ -1,4 +1,4 @@
-package com.yds.jianshu.utils.statusbar;
+package com.yds.jianshulib.utils.statusbar;
 
 /**
  * Created by yds
@@ -10,13 +10,12 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
-import android.support.annotation.IntDef;
+import androidx.annotation.IntDef;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.yds.jianshu.R;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

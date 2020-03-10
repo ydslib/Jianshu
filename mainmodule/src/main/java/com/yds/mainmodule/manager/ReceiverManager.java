@@ -3,7 +3,7 @@ package com.yds.mainmodule.manager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 
-import com.yds.jianshu.itf.Manager;
+import com.yds.jianshulib.itf.Manager;
 
 /**
  * Created by yds

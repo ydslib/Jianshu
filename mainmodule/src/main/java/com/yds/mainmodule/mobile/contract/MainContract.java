@@ -1,7 +1,7 @@
 package com.yds.mainmodule.mobile.contract;
 
-import com.yds.jianshu.base.mvp.IBasePresenter;
-import com.yds.jianshu.base.mvp.IBaseView;
+import com.yds.jianshulib.base.mvp.IBasePresenter;
+import com.yds.jianshulib.base.mvp.IBaseView;
 
 /**
  * Created by yds

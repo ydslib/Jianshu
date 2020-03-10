@@ -1,4 +1,4 @@
-package com.yds.jianshu.utils;
+package com.yds.jianshulib.utils;
 
 import android.content.Context;
 import android.view.Gravity;
@@ -8,9 +8,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.yds.jianshulib.R;
+import com.yds.jianshulib.utils.widget.constance.CommonImageType;
 
-import com.yds.jianshu.R;
-import com.yds.jianshu.utils.widget.constance.CommonImageType;
 
 /**
  * Created by yds

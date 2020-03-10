@@ -1,7 +1,7 @@
-package com.yds.jianshu.utils.widget.constance;
+package com.yds.jianshulib.utils.widget.constance;
 
 
-import com.yds.jianshu.R;
+import com.yds.jianshulib.R;
 
 /**
  * Created by yds

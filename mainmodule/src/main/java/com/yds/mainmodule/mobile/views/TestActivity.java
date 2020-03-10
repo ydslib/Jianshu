@@ -5,15 +5,14 @@ package com.yds.mainmodule.mobile.views;
  * on 2020/2/20.
  */
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import com.google.android.material.tabs.TabLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.app.AppCompatActivity;
 
-import com.yds.jianshu.adapter.BaseTabFragmentPagerAdapter;
+import com.yds.jianshulib.adapter.BaseTabFragmentPagerAdapter;
 import com.yds.mainmodule.R;
 import com.yds.mainmodule.fragment.KojimaFragment;
 import com.yds.mainmodule.fragment.MakeListFragment;

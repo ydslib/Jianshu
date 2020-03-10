@@ -3,8 +3,8 @@ package com.yds.mainmodule.manager;
 import android.app.Activity;
 import android.content.Context;
 
-import com.yds.jianshu.itf.Manager;
-import com.yds.jianshu.utils.ObjectUtil;
+import com.yds.jianshulib.itf.Manager;
+import com.yds.jianshulib.utils.ObjectUtil;
 
 /**
  * Created by yds

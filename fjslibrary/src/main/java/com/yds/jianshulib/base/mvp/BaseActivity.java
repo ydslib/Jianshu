@@ -1,14 +1,13 @@
-package com.yds.jianshu.base.mvp;
+package com.yds.jianshulib.base.mvp;
 
 import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.Window;
-import android.view.WindowManager;
 
-import com.yds.jianshu.utils.statusbar.StatusBarUtil;
+import com.yds.jianshulib.utils.statusbar.StatusBarUtil;
+
 
 /**
  * Created by yds

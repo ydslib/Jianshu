@@ -1,4 +1,4 @@
-package com.yds.jianshu.utils.statusbar;
+package com.yds.jianshulib.utils.statusbar;
 
 /**
  * Created by yds
