@@ -10,10 +10,12 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/bottom_tab_viewpager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/line_view"
+        >
 
     </androidx.viewpager.widget.ViewPager>
 
@@ -25,7 +27,6 @@
         app:layout_constraintBottom_toTopOf="@+id/main_bottom_tabLayout"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bottom_tab_viewpager"
         app:layout_constraintVertical_bias="1.0" />
 
     <com.google.android.material.tabs.TabLayout
@@ -35,7 +36,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/line_view"
         app:layout_constraintVertical_bias="1.0"
         app:tabIndicatorHeight="0dp"
         app:tabMode="fixed"

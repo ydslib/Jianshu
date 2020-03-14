@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.yds.mainmodule.R;
+import com.yds.mainmodule.adapter.ArticleAdapter;
 import com.yds.mainmodule.adapter.TestAdapter;
 import com.yds.mainmodule.mobile.views.DividerItemDecoration;
 
@@ -24,7 +25,7 @@ import java.util.List;
  */
 public class MakeListFragment extends Fragment {
     private RecyclerView mRecyclerView;
-    private TestAdapter mAdapter;
+    private ArticleAdapter mAdapter;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -35,13 +36,13 @@ public class MakeListFragment extends Fragment {
     }
 
     private void initAdapter(){
-        mRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(),DividerItemDecoration.VERTICAL_LIST));;
+//        mRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(),DividerItemDecoration.VERTICAL_LIST));;
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        List<Integer> list = new ArrayList<>();
-        for (int i=0;i<20;i++){
-            list.add(i);
-        }
-        mAdapter = new TestAdapter(list,getActivity());
+//        List<Integer> list = new ArrayList<>();
+//        for (int i=0;i<20;i++){
+//            list.add(i);
+//        }
+        mAdapter = new ArticleAdapter(getActivity());
         mRecyclerView.setAdapter(mAdapter);
 
     }
