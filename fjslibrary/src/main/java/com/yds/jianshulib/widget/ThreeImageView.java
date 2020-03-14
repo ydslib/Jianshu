@@ -165,6 +165,8 @@ public class ThreeImageView<T> extends ViewGroup {
      * @param list
      */
     public void setImagesData(List<T> list) {
+        mImgDataList = list;
+        removeAllViews();
         if (list == null || list.size() == 0) {
             //如果图片列表为空，则隐藏控件
             this.setVisibility(GONE);
@@ -178,39 +180,17 @@ public class ThreeImageView<T> extends ViewGroup {
         int[] params = calculateParam(showCount);
         mRowCount = params[0];//行数
         mColumnCount = params[1];//列数
-        if (mImgDataList == null) {//mImgDataList为图片缓存列表
-            int i = 0;
-            while (i < showCount) {
-                ImageView iv = getImageView(i);
-                if (iv == null) {
-                    return;
-                }
-                addView(iv, generateDefaultLayoutParams());
-                if (i == mMaxSize - 1 && list.size() > mMaxSize) {
-                    textView = new TextView(mContext);
-                    addView(textView, generateDefaultLayoutParams());
-                }
-                i++;
+        for (int i=0;i<showCount;i++){
+            ImageView iv = getImageView(i);
+            if (iv == null) {
+                return;
             }
-        } else {
-            int oldShowCount = getNeedShowCount(mImgDataList.size());
-            if (oldShowCount > showCount) {
-                removeViews(showCount, oldShowCount - showCount);
-            } else if (oldShowCount < showCount) {
-                for (int i = oldShowCount; i < showCount; i++) {
-                    ImageView iv = getImageView(i);
-                    if (iv == null) {
-                        return;
-                    }
-                    addView(iv, generateDefaultLayoutParams());
-                    if (i == mMaxSize - 1 && mImgDataList.size() > mMaxSize) {
-                        textView = new TextView(mContext);
-                        addView(textView, generateDefaultLayoutParams());
-                    }
-                }
+            addView(iv, generateDefaultLayoutParams());
+            if (i == mMaxSize - 1 && list.size() > mMaxSize) {
+                textView = new TextView(mContext);
+                addView(textView, generateDefaultLayoutParams());
             }
         }
-        mImgDataList = list;
         requestLayout();
     }
 
