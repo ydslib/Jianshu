@@ -22,16 +22,23 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
     private Context mContext;
     private List<Integer> mList = new ArrayList<>();
     private List<Integer> mList1 = new ArrayList<>();
+    private List<Integer> mList2 = new ArrayList<>();
+    private int[] src = new int[]{
+            R.drawable.test01,R.drawable.test02,R.drawable.test03,
+            R.drawable.test04,R.drawable.test05,R.drawable.test06,
+            R.drawable.test07,R.drawable.test08,R.drawable.test09,R.drawable.test10
+    };
     public ArticleAdapter(Context mContext) {
         this.mContext = mContext;
-        mList.add(R.drawable.test01);
-        mList.add(R.drawable.test02);
-        mList.add(R.drawable.test03);
-        mList.add(R.drawable.test04);
-
-        mList1.add(R.drawable.test05);
-        mList1.add(R.drawable.test06);
-
+        for (int i=0;i<4;i++){
+            mList.add(src[i]);
+        }
+        for (int i=0;i<2;i++){
+            mList1.add(src[i*2+2]);
+        }
+        for(int i=0;i<src.length;i++){
+            mList2.add(src[i]);
+        }
     }
 
     @NonNull
@@ -43,10 +50,12 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        if (position % 2 == 0) {
+        if (position % 3 == 0) {
             holder.mImageView.setImagesData(mList);
-        }else{
+        }else if(position % 3 == 1){
             holder.mImageView.setImagesData(mList1);
+        }else{
+            holder.mImageView.setImagesData(mList2);
         }
 
 //        LinearLayoutManager layoutManager = new LinearLayoutManager(mContext);

@@ -56,6 +56,12 @@ public class ThreeImageView<T> extends ViewGroup {
         typedArray.recycle();
     }
 
+    private void layoutChildrenView() {
+        if (mImgDataList == null) return;
+        int showChildrenCount = getNeedShowCount(mImgDataList.size());
+        layoutMaxCountChildrenView(showChildrenCount);
+    }
+
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         layoutChildrenView();
@@ -86,59 +92,56 @@ public class ThreeImageView<T> extends ViewGroup {
         setMeasuredDimension(width, height);
     }
 
-    /**
-     * 根据照片数量和span类型来对子视图进行动态排版布局
-     */
-    private void layoutChildrenView() {
-        if (mImgDataList == null) return;
-        int shouldChildrenCount = getNeedShowCount(mImgDataList.size());
-        layoutForThreeChildrenView(shouldChildrenCount);
-    }
 
-    private void layoutForThreeChildrenView(int childrenCount) {
-        int left, top, right, bottom;
+    private void layoutMaxCountChildrenView(int childrenCount) {
+        int left = 0, top = 0, right=0, bottom=0;
         for (int i = 0; i < childrenCount; i++) {
             ImageView childrenView = (ImageView) getChildAt(i);
             childrenView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            left = i * (mImageSize + mGap) + getPaddingLeft();
-            top = getPaddingTop();
-            right = left + mImageSize;
+            left = getPaddingLeft()+i%3*mImageSize+i%3*mGap;
+            top = getPaddingTop()+i/3*mImageSize+i/3*mGap;
+            right = left+mImageSize;
             bottom = top + mImageSize;
-            childrenView.layout(left, top, right, bottom);
+            childrenView.layout(left,top,right,bottom);
             Glide.with(mContext).load(mImgDataList.get(i)).into(childrenView);
-            if (i == mMaxSize - 1 && mImgDataList.size() > mMaxSize) {
-                if (textView != null) {
-                    textView.bringToFront();
-                    //设置字体大小
-                    String text = "共" + mImgDataList.size() + "张图";
-                    int textSize = px2sp(mContext, mImageSize / 6);
-                    textView.setTextSize(textSize);
-                    textView.setText(text);
+        }
+        showImageAndText(left,top,right,bottom);
+    }
 
-                    //设置文本颜色及背景半透明
-                    textView.setTextColor(Color.WHITE);
-                    textView.setBackgroundColor(0x80000000);
+    private void showImageAndText(int left,int top,int right,int bottom){
 
-                    //设置文字位置
-                    // 1.用FontMetrics对象计算高度
-                    Paint.FontMetricsInt fontMetricsInt = textView.getPaint().getFontMetricsInt();
-                    int textHeight = fontMetricsInt.bottom - fontMetricsInt.top;//文本高度
-                    int paddingTop = (mImageSize - textHeight) / 2;
-                    //方法一：设置居中,setGravity(Gravity.CENTER)只显示为水平居中，所以需要设置padding
-                    textView.setPadding(0, paddingTop, 0, paddingTop);
-                    textView.setGravity(Gravity.CENTER);
+        if (mImgDataList.size() > mMaxSize) {
+            if (textView != null) {
+                textView.bringToFront();
+                //设置字体大小
+                String text = "共" + mImgDataList.size() + "张图";
+                int textSize = px2sp(mContext, mImageSize / 6);
+                textView.setTextSize(textSize);
+                textView.setText(text);
 
-                    //方法二:设置居中
+                //设置文本颜色及背景半透明
+                textView.setTextColor(Color.WHITE);
+                textView.setBackgroundColor(0x80000000);
+
+                //设置文字位置
+                // 1.用FontMetrics对象计算高度
+                Paint.FontMetricsInt fontMetricsInt = textView.getPaint().getFontMetricsInt();
+                int textHeight = fontMetricsInt.bottom - fontMetricsInt.top;//文本高度
+                int paddingTop = (mImageSize - textHeight) / 2;
+                //方法一：设置居中,setGravity(Gravity.CENTER)只显示为水平居中，所以需要设置padding
+                textView.setPadding(0, paddingTop, 0, paddingTop);
+                textView.setGravity(Gravity.CENTER);
+
+                //方法二:设置居中
 //                    Rect bounds = new Rect();
 //                    textView.getPaint().getTextBounds(text, 0, text.length(), bounds);
 //                    int textWidth = bounds.right - bounds.left;
 //                    int paddingLeft = (mImageSize - textWidth) / 2;
 //                    textView.setPadding(paddingLeft, paddingTop, 0, 0);
 
-                    textView.layout(left, top, right, bottom);
-                    //这里设置只会显示水平居中，所以需要上面的padding
+                textView.layout(left, top, right, bottom);
+                //这里设置只会显示水平居中，所以需要上面的padding
 
-                }
             }
         }
     }
@@ -180,7 +183,7 @@ public class ThreeImageView<T> extends ViewGroup {
         int[] params = calculateParam(showCount);
         mRowCount = params[0];//行数
         mColumnCount = params[1];//列数
-        for (int i=0;i<showCount;i++){
+        for (int i = 0; i < showCount; i++) {
             ImageView iv = getImageView(i);
             if (iv == null) {
                 return;
