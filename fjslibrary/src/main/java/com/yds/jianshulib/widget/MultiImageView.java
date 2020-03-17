@@ -7,6 +7,7 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.Gravity;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,7 +22,7 @@ import java.util.List;
  * Created by yds
  * on 2020/3/11.
  */
-public class ThreeImageView<T> extends ViewGroup {
+public class MultiImageView<T> extends ViewGroup {
     private Context mContext;
     private int mGap;//图片间距
     private int mSingleImgSize;//单张图片尺寸
@@ -33,15 +34,17 @@ public class ThreeImageView<T> extends ViewGroup {
     private int mColumnCount;//列数
     private TextView textView;
 
-    public ThreeImageView(Context context) {
+    private OnItemImageClickListener<T> mOnItemImageClickListener;
+
+    public MultiImageView(Context context) {
         this(context, null);
     }
 
-    public ThreeImageView(Context context, AttributeSet attrs) {
+    public MultiImageView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public ThreeImageView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public MultiImageView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context, attrs);
     }
@@ -49,10 +52,10 @@ public class ThreeImageView<T> extends ViewGroup {
     private void init(Context context, AttributeSet attrs) {
         this.mContext = context;
         //自定义xml属性
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ThreeImageView);
-        this.mGap = (int) typedArray.getDimension(R.styleable.ThreeImageView_imgGap, 0);
-        this.mSingleImgSize = typedArray.getDimensionPixelSize(R.styleable.ThreeImageView_singleImgSize, -1);
-        this.mMaxSize = typedArray.getInteger(R.styleable.ThreeImageView_maxSize, 3);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MultiImageView);
+        this.mGap = (int) typedArray.getDimension(R.styleable.MultiImageView_imgGap, 0);
+        this.mSingleImgSize = typedArray.getDimensionPixelSize(R.styleable.MultiImageView_singleImgSize, -1);
+        this.mMaxSize = typedArray.getInteger(R.styleable.MultiImageView_maxSize, 3);
         typedArray.recycle();
     }
 
@@ -94,21 +97,21 @@ public class ThreeImageView<T> extends ViewGroup {
 
 
     private void layoutMaxCountChildrenView(int childrenCount) {
-        int left = 0, top = 0, right=0, bottom=0;
+        int left = 0, top = 0, right = 0, bottom = 0;
         for (int i = 0; i < childrenCount; i++) {
             ImageView childrenView = (ImageView) getChildAt(i);
             childrenView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            left = getPaddingLeft()+i%3*mImageSize+i%3*mGap;
-            top = getPaddingTop()+i/3*mImageSize+i/3*mGap;
-            right = left+mImageSize;
+            left = getPaddingLeft() + i % 3 * mImageSize + i % 3 * mGap;
+            top = getPaddingTop() + i / 3 * mImageSize + i / 3 * mGap;
+            right = left + mImageSize;
             bottom = top + mImageSize;
-            childrenView.layout(left,top,right,bottom);
+            childrenView.layout(left, top, right, bottom);
             Glide.with(mContext).load(mImgDataList.get(i)).into(childrenView);
         }
-        showImageAndText(left,top,right,bottom);
+        showImageAndText(left, top, right, bottom);
     }
 
-    private void showImageAndText(int left,int top,int right,int bottom){
+    private void showImageAndText(int left, int top, int right, int bottom) {
 
         if (mImgDataList.size() > mMaxSize) {
             if (textView != null) {
@@ -208,8 +211,16 @@ public class ThreeImageView<T> extends ViewGroup {
         if (position < mImageViewList.size()) {
             return mImageViewList.get(position);
         } else {
-            ImageView imageView = new ImageView(mContext);
+            final ImageView imageView = new ImageView(mContext);
             mImageViewList.add(imageView);
+            imageView.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mOnItemImageClickListener != null) {
+                        mOnItemImageClickListener.onItemImageClick(mContext, imageView, position, mImgDataList);
+                    }
+                }
+            });
             return imageView;
         }
     }
@@ -240,8 +251,16 @@ public class ThreeImageView<T> extends ViewGroup {
         mMaxSize = maxSize;
     }
 
+    public void setOnItemImageClickListener(OnItemImageClickListener<T> onItemImageClickListener) {
+        mOnItemImageClickListener = onItemImageClickListener;
+    }
+
     private int px2sp(Context context, float pxValue) {
         final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
         return (int) (pxValue / fontScale + 0.5f);
+    }
+
+    public interface OnItemImageClickListener<T> {
+        void onItemImageClick(Context context, ImageView imageView, int index, List<T> list);
     }
 }

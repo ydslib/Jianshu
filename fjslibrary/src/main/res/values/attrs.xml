@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="ThreeImageView">
+    <declare-styleable name="MultiImageView">
         <attr name="singleImgSize" format="dimension"/>
         <attr name="imgGap" format="dimension"/>
         <attr name="maxSize" format="integer"/>

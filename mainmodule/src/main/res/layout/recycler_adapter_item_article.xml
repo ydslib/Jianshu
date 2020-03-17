@@ -24,6 +24,7 @@
             android:orientation="vertical"
             android:paddingLeft="10dp">
             <TextView
+                android:textColor="@color/f_black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Nancy小韦"
@@ -45,6 +46,7 @@
             android:id="@+id/abstract_article_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:lineSpacingExtra="3dp"
             android:text="使用中如果按照此方法进行引用,app里面的注解会失效,但是修改起来也很简单,只需要将annotationProcessor 改为compile 即可亲测可用,希望可以帮到你最后推荐一个插件zelezny : Butterknife插件,在setting->plugins中搜索butterknife即可下载,下载后重启studio,在activity或者fragment下将光标选中"/>
     </LinearLayout>
     <!--<androidx.recyclerview.widget.RecyclerView-->
@@ -54,7 +56,7 @@
         <!--&gt;-->
     <!--</androidx.recyclerview.widget.RecyclerView>-->
 
-    <com.yds.jianshulib.widget.ThreeImageView
+    <com.yds.jianshulib.widget.MultiImageView
         android:id="@+id/image_three"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

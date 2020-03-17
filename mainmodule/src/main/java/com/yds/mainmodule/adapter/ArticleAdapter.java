@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.yds.jianshulib.widget.ThreeImageView;
+import com.yds.jianshulib.widget.MultiImageView;
 import com.yds.mainmodule.R;
 
 import java.util.ArrayList;
@@ -20,25 +20,10 @@ import java.util.List;
  */
 public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHolder> {
     private Context mContext;
-    private List<Integer> mList = new ArrayList<>();
-    private List<Integer> mList1 = new ArrayList<>();
-    private List<Integer> mList2 = new ArrayList<>();
-    private int[] src = new int[]{
-            R.drawable.test01,R.drawable.test02,R.drawable.test03,
-            R.drawable.test04,R.drawable.test05,R.drawable.test06,
-            R.drawable.test07,R.drawable.test08,R.drawable.test09,R.drawable.test10
-    };
-    public ArticleAdapter(Context mContext) {
+    private List<Integer> mList;
+    public ArticleAdapter(Context mContext,List<Integer> mList) {
         this.mContext = mContext;
-        for (int i=0;i<4;i++){
-            mList.add(src[i]);
-        }
-        for (int i=0;i<2;i++){
-            mList1.add(src[i*2+2]);
-        }
-        for(int i=0;i<src.length;i++){
-            mList2.add(src[i]);
-        }
+        this.mList = mList;
     }
 
     @NonNull
@@ -50,13 +35,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        if (position % 3 == 0) {
-            holder.mImageView.setImagesData(mList);
-        }else if(position % 3 == 1){
-            holder.mImageView.setImagesData(mList1);
-        }else{
-            holder.mImageView.setImagesData(mList2);
-        }
+        holder.mImageView.setImagesData(mList);
 
 //        LinearLayoutManager layoutManager = new LinearLayoutManager(mContext);
 //        DividerItemDecoration decoration = new DividerItemDecoration(mContext,LinearLayout.HORIZONTAL);
@@ -74,7 +53,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private ThreeImageView mImageView;
+        private MultiImageView mImageView;
 
         //        private RecyclerView mRecyclerView;
         public ViewHolder(@NonNull View itemView) {
