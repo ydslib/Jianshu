@@ -36,4 +36,5 @@ dependencies {
     androidTestImplementation rootProject.ext.dependencies["espresso-core"]
     implementation project(':fjslibrary')
     implementation 'com.github.bumptech.glide:glide:4.11.0'
+    implementation 'com.alibaba:fastjson:1.2.61'
 }

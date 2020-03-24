@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,10 +17,14 @@ import android.widget.ListView;
 import com.yds.mainmodule.R;
 import com.yds.mainmodule.adapter.ArticleAdapter;
 import com.yds.mainmodule.adapter.TestAdapter;
+import com.yds.mainmodule.bo.MakeListDataBO;
+import com.yds.mainmodule.dao.MakeListDataDAO;
 import com.yds.mainmodule.mobile.views.DividerItemDecoration;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by yds
@@ -29,12 +34,7 @@ public class MakeListFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private SwipeRefreshLayout mRefreshLayout;
     private ArticleAdapter mAdapter;
-    private List<Integer> mList;
-    private int[] src = new int[]{
-            R.drawable.test01,R.drawable.test02,R.drawable.test03,
-            R.drawable.test04,R.drawable.test05,R.drawable.test06,
-            R.drawable.test07,R.drawable.test08,R.drawable.test09,R.drawable.test10
-    };
+    List<MakeListDataBO> dataBOList;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -48,29 +48,37 @@ public class MakeListFragment extends Fragment {
     private void initAdapter(){
 //        mRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(),DividerItemDecoration.VERTICAL_LIST));;
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-//        List<Integer> list = new ArrayList<>();
-//        for (int i=0;i<20;i++){
-//            list.add(i);
-//        }
-        mList = new ArrayList<>();
-        for (int i=0;i<3;i++){
-            mList.add(src[i]);
-        }
-        mAdapter = new ArticleAdapter(getActivity(),mList);
+        dataBOList = MakeListDataDAO.parseMakeListData(getContext());
+        mAdapter = new ArticleAdapter(getActivity(),dataBOList);
         mRecyclerView.setAdapter(mAdapter);
 
         mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                mList.clear();
-                for (int i=0;i<src.length;i++){
-                    mList.add(src[i]);
-                }
+                dataBOList.clear();
+                dataBOList.addAll(MakeListDataDAO.refreshMakeListData(getContext()));
                 mAdapter.notifyDataSetChanged();
+
                 mRefreshLayout.setRefreshing(false);
             }
         });
-
         mRefreshLayout.setColorSchemeResources(R.color.f_font_tabbar_text_selected);
+
+//        mRecyclerView.addOnScrollListener(new OnLoadMoreListener() {
+//            @Override
+//            protected void onLoading(int countItem, int lastItem) {
+//                Handler handler = new Handler();
+//                handler.postDelayed(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        mAdapter.notifyDataSetChanged();
+//                        if (mRefreshLayout.isRefreshing()){
+//                            mRefreshLayout.setRefreshing(false);
+//                        }
+//                    }
+//                },3000);
+
+//            }
+//        });
     }
 }

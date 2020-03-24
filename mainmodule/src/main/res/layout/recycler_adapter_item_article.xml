@@ -13,6 +13,7 @@
         android:paddingTop="5dp"
         android:paddingBottom="5dp">
         <com.yds.jianshulib.widget.CirCleImageView
+            android:id="@+id/circle_img"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/test04"
@@ -24,12 +25,14 @@
             android:orientation="vertical"
             android:paddingLeft="10dp">
             <TextView
+                android:id="@+id/user_name"
                 android:textColor="@color/f_black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Nancy小韦"
                 android:textSize="14sp"/>
             <TextView
+                android:id="@+id/time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="12sp"
