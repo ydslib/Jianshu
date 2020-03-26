@@ -3,11 +3,17 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
+
     <androidx.core.widget.ContentLoadingProgressBar
+        android:layout_margin="5dp"
         android:id="@+id/load_more_progress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         style="?android:attr/progressBarStyle"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:padding="8dp"
+        android:elevation="2dp"
         android:layout_gravity="center_horizontal"
+        android:background="@drawable/circle_progress_shape"
         />
+
 </LinearLayout>

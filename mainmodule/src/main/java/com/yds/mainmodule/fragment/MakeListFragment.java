@@ -12,19 +12,14 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
+import com.yds.jianshulib.itf.OnLoadMoreListener;
 import com.yds.mainmodule.R;
 import com.yds.mainmodule.adapter.ArticleAdapter;
-import com.yds.mainmodule.adapter.TestAdapter;
 import com.yds.mainmodule.bo.MakeListDataBO;
 import com.yds.mainmodule.dao.MakeListDataDAO;
-import com.yds.mainmodule.mobile.views.DividerItemDecoration;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by yds
@@ -64,21 +59,22 @@ public class MakeListFragment extends Fragment {
         });
         mRefreshLayout.setColorSchemeResources(R.color.f_font_tabbar_text_selected);
 
-//        mRecyclerView.addOnScrollListener(new OnLoadMoreListener() {
-//            @Override
-//            protected void onLoading(int countItem, int lastItem) {
-//                Handler handler = new Handler();
-//                handler.postDelayed(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        mAdapter.notifyDataSetChanged();
-//                        if (mRefreshLayout.isRefreshing()){
-//                            mRefreshLayout.setRefreshing(false);
-//                        }
-//                    }
-//                },3000);
+        mRecyclerView.addOnScrollListener(new OnLoadMoreListener() {
+            @Override
+            protected void onLoading(int countItem, int lastItem) {
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        dataBOList.addAll(MakeListDataDAO.refreshMakeListData(getContext()));
+                        mAdapter.notifyDataSetChanged();
+                        if (mRefreshLayout.isRefreshing()){
+                            mRefreshLayout.setRefreshing(false);
+                        }
+                    }
+                },3000);
 
-//            }
-//        });
+            }
+        });
     }
 }
