@@ -26,3 +26,13 @@
 
 [【项目FJU】使用SwipeRefreshLayout+RecyclerView制作下拉刷新上拉加载更多](https://www.jianshu.com/p/2aa695666486)
 
+
+# 截图
+![多图加载](https://github.com/ydslib/Picture/blob/master/jianshu/makelist_01.jpg)
+
+![上拉加载更多](https://github.com/ydslib/Picture/blob/master/jianshu/makelist_02.jpg)
+
+![多图加载](https://github.com/ydslib/Picture/blob/master/jianshu/makelist_03.jpg)
+
+![预览](https://github.com/ydslib/Picture/blob/master/jianshu/makelist.gif)
+
