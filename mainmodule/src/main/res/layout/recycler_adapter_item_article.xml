@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -29,14 +30,14 @@
                 android:textColor="@color/f_black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nancy小韦"
+                tools:text="Nancy小韦"
                 android:textSize="14sp"/>
             <TextView
                 android:id="@+id/time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="12sp"
-                android:text="昨天 15:10"/>
+                tools:text="昨天 15:10"/>
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
@@ -50,8 +51,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:lineSpacingExtra="3dp"
-            android:text="使用中如果按照此方法进行引用,app里面的注解会失效,但是修改起来也很简单,只需要将annotationProcessor 改为compile 即可亲测可用,希望可以帮到你最后推荐一个插件zelezny : Butterknife插件,在setting->plugins中搜索butterknife即可下载,下载后重启studio,在activity或者fragment下将光标选中"/>
+            tools:text="使用中如果按照此方法进行引用,app里面的注解会失效,但是修改起来也很简单,只需要将annotationProcessor 改为compile 即可亲测可用,希望可以帮到你最后推荐一个插件zelezny : Butterknife插件,在setting->plugins中搜索butterknife即可下载,下载后重启studio,在activity或者fragment下将光标选中"/>
     </LinearLayout>
+
     <!--<androidx.recyclerview.widget.RecyclerView-->
         <!--android:id="@+id/image_recyclerview"-->
         <!--android:layout_width="match_parent"-->
@@ -70,6 +72,50 @@
         app:singleImgSize="50dp"
         android:paddingBottom="10dp"
         />
+    <LinearLayout
+        android:paddingBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:layout_gravity="center"
+            android:src="@drawable/f_jevel"/>
+        <TextView
+            android:id="@+id/jevel_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:textSize="12sp"
+            android:textColor="@color/f_font_tabbar_text_selected"
+            tools:text="0.965"/>
+        <TextView
+            android:id="@+id/read_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:textSize="12sp"
+            tools:text="33 阅读"/>
+        <TextView
+            android:id="@+id/comment_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:textSize="12sp"
+            tools:text="0 评论"
+            />
+        <TextView
+            android:id="@+id/awesome_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:textSize="12sp"
+            tools:text="12 赞"
+            />
+    </LinearLayout>
     <View
         android:layout_width="match_parent"
         android:layout_height="8dp"

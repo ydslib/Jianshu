@@ -12,6 +12,42 @@ public class MakeListDataBO {
     private String time;
     private String abstractStr;
     private List<String> mList;
+    private String jevelNum;
+    private String readNum;
+    private String commentNum;
+    private String awesomeNum;
+
+    public String getJevelNum() {
+        return jevelNum;
+    }
+
+    public void setJevelNum(String jevelNum) {
+        this.jevelNum = jevelNum;
+    }
+
+    public String getReadNum() {
+        return readNum;
+    }
+
+    public void setReadNum(String readNum) {
+        this.readNum = readNum;
+    }
+
+    public String getCommentNum() {
+        return commentNum;
+    }
+
+    public void setCommentNum(String commentNum) {
+        this.commentNum = commentNum;
+    }
+
+    public String getAwesomeNum() {
+        return awesomeNum;
+    }
+
+    public void setAwesomeNum(String awesomeNum) {
+        this.awesomeNum = awesomeNum;
+    }
 
     public String getHeadUrl() {
         return headUrl;

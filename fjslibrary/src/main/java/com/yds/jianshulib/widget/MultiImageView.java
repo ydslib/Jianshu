@@ -106,7 +106,7 @@ public class MultiImageView<T> extends ViewGroup {
             right = left + mImageSize;
             bottom = top + mImageSize;
             childrenView.layout(left, top, right, bottom);
-            Glide.with(mContext).load(mImgDataList.get(i)).into(childrenView);
+            Glide.with(mContext).load(mImgDataList.get(i)).placeholder(R.drawable.f_placeholder).into(childrenView);
         }
         showImageAndText(left, top, right, bottom);
     }
