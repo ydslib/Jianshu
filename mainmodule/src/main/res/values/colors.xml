@@ -8,6 +8,7 @@
 
     <color name="f_font_tabbar_text_selected">#EA6F5A</color>
     <color name="f_font_tabbar_text_default">#C3C3C3</color>
-    <color name="f_line_gray">#B9B8B8</color>
+    <color name="f_line_gray">#EBEAEA</color>
     <color name="f_black">#000000</color>
+    <color name="f_text_gray">#A2A2A2</color>
 </resources>

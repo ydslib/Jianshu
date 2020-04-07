@@ -4,7 +4,10 @@
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <include layout="@layout/main_module_search_layout" />
     <com.google.android.material.appbar.AppBarLayout
+        android:visibility="visible"
+        android:id="@+id/app_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:theme="@style/ToolbarTheme"
@@ -16,13 +19,14 @@
             app:contentScrim="#ffffff"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
             <com.yds.jianshulib.widget.SearchBarLayout
+                android:id="@+id/search"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
                 android:background="@drawable/shape_search"
                 android:gravity="center"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 app:layout_collapseMode="parallax"
                 />
         </com.google.android.material.appbar.CollapsingToolbarLayout>

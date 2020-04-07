@@ -11,4 +11,11 @@
     <style name="OnePixelActivity" parent="android:Theme.Holo.Light.NoActionBar">//无标题
         <item name="android:windowIsTranslucent">true</item>//透明
     </style>
+    <style name="search_flow_layout_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">4dp</item>
+        <item name="android:background">@drawable/shape_search_tag</item>
+        <item name="android:textColor">#000</item>
+    </style>
 </resources>

@@ -1,16 +1,13 @@
 package com.yds.mainmodule.dao;
 
 import android.content.Context;
-import android.content.res.AssetManager;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.yds.mainmodule.bo.MakeListDataBO;
+import com.yds.mainmodule.util.AssetsUtils;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,12 +28,12 @@ public class MakeListDataDAO {
     }
 
     /**
-     * @param context
-     * @return
+     * @param context 上下文
+     * @return List<MakeListDataBO>
      */
     public static List<MakeListDataBO> parseMakeListData(Context context) {
         List<MakeListDataBO> dataBOList = new ArrayList<>();
-        String result = getJson(context);
+        String result = AssetsUtils.getJson(context, FILE_NAME);
         JSONArray array = JSON.parseArray(result);
         for (int j = 0; j < array.size(); j++) {
             MakeListDataBO dataBO = new MakeListDataBO();
@@ -65,32 +62,5 @@ public class MakeListDataDAO {
         return dataBOList;
     }
 
-    public static String getJson(Context context) {
-        StringBuilder stringBuilder = new StringBuilder();
-        AssetManager assetManager = context.getAssets();
-        InputStreamReader isr = null;
-        BufferedReader bf = null;
-        try {
-            isr = new InputStreamReader(assetManager.open(FILE_NAME));
-            bf = new BufferedReader(isr);
-            String line;
-            while ((line = bf.readLine()) != null) {
-                stringBuilder.append(line);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (bf != null) {
-                    bf.close();
-                }
-                if (isr != null) {
-                    isr.close();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        return stringBuilder.toString();
-    }
+
 }
