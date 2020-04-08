@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:visibility="visible">
+    android:visibility="gone">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/search_layout"
@@ -69,95 +69,6 @@
         android:layout_height="1dp"
         android:background="@color/f_line_gray" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingStart="10dp"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp">
-
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/search_history" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginStart="10dp"
-            android:text="历史记录"
-            android:textColor="@color/f_black" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingRight="10dp"
-            android:text="清除历史"
-            android:textAlignment="textEnd"
-            android:textColor="#A2A2A2" />
-    </LinearLayout>
-
-    <com.yds.jianshulib.widget.FlowLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="5dp">
-
-        <TextView
-            style="@style/search_flow_layout_text"
-            android:text="welcome" />
-
-        <TextView
-            style="@style/search_flow_layout_text"
-            android:text="测试" />
-
-        <TextView
-            style="@style/search_flow_layout_text"
-            android:text="查找ViewHolder" />
-
-        <TextView
-            style="@style/search_flow_layout_text"
-            android:text="快速查找" />
-
-        <TextView
-            style="@style/search_flow_layout_text"
-            android:text="线程" />
-
-        <TextView
-            style="@style/search_flow_layout_text"
-            android:text="多线程" />
-    </com.yds.jianshulib.widget.FlowLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#EBE8E8" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp">
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/search_populer"
-            android:layout_marginLeft="10dp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/f_black"
-            android:layout_marginLeft="10dp"
-            android:text="搜索趋势"/>
-    </LinearLayout>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/search_rank_recycler"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="10dp">
-
-    </androidx.recyclerview.widget.RecyclerView>
+    <include layout="@layout/main_module_search_his" />
+    <include layout="@layout/main_module_search_result" />
 </LinearLayout>

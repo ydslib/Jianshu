@@ -16,8 +16,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
-import android.text.Spannable;
-import android.text.SpannableString;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,14 +26,19 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.yds.jianshulib.adapter.BaseTabFragmentPagerAdapter;
 import com.yds.jianshulib.widget.SearchBarLayout;
 import com.yds.mainmodule.R;
 import com.yds.mainmodule.adapter.SearchRankAdapter;
+import com.yds.mainmodule.adapter.SearchResultAdapter;
 import com.yds.mainmodule.bo.SearchRankBO;
+import com.yds.mainmodule.bo.SearchResultListBO;
 import com.yds.mainmodule.dao.SearchRankDAO;
+import com.yds.mainmodule.dao.SearchResultListDAO;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,6 +59,17 @@ public class HomeFragment extends Fragment {
     private InputMethodManager mInputMethodManager;
     private Activity mActivity;
     private RecyclerView mSearchRank;
+    private RecyclerView mSearchResult;
+
+    private LinearLayout mLayoutHis;
+    private LinearLayout mLayoutSearchResult;
+
+    private TextView mHotTv;
+    private TextView mRelateTv;
+    private List<SearchResultListBO> mResultList;
+    private SearchResultAdapter mResultAdapter;
+
+    private String mSearchKey;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -82,6 +99,11 @@ public class HomeFragment extends Fragment {
     private void initEvent() {
         mSearchBarLayout.setOnClickListener(mListener);
         mBack.setOnClickListener(mListener);
+        mHotTv.setOnClickListener(mListener);
+        mRelateTv.setOnClickListener(mListener);
+
+        MyWathcer myWathcer = new MyWathcer();
+        mSearchEdit.addTextChangedListener(myWathcer);
     }
 
     private void initView(View view) {
@@ -93,6 +115,11 @@ public class HomeFragment extends Fragment {
         mBack = view.findViewById(R.id.back);
         mSearchEdit = view.findViewById(R.id.searc_edit);
         mSearchRank = view.findViewById(R.id.search_rank_recycler);
+        mSearchResult = view.findViewById(R.id.search_result_rv);
+        mLayoutHis = view.findViewById(R.id.search_his);
+        mLayoutSearchResult = view.findViewById(R.id.search_result_ll);
+        mRelateTv = view.findViewById(R.id.relate_tv);
+        mHotTv = view.findViewById(R.id.hot_tv);
 
         mTabLayout.addTab(mTabLayout.newTab().setText("打榜"));
         mTabLayout.addTab(mTabLayout.newTab().setText("推荐"));
@@ -127,18 +154,66 @@ public class HomeFragment extends Fragment {
                     mInputMethodManager.showSoftInput(mSearchEdit, 0);
                 }
                 List<SearchRankBO> list = SearchRankDAO.parseSearchRankData(mActivity);
-                SearchRankAdapter rankAdapter = new SearchRankAdapter(mActivity,list);
+                SearchRankAdapter rankAdapter = new SearchRankAdapter(mActivity, list);
                 LinearLayoutManager layoutManager = new LinearLayoutManager(mActivity);
                 mSearchRank.setLayoutManager(layoutManager);
                 mSearchRank.setAdapter(rankAdapter);
-            } else if (v.getId() == R.id.back) {
+            } else if ((v.getId() == R.id.back)) {
                 mAppBarLayout.setVisibility(View.VISIBLE);
                 mViewPager.setVisibility(View.VISIBLE);
                 mSearchContent.setVisibility(View.GONE);
+                mSearchEdit.setText("");
                 if (mInputMethodManager != null) {
                     mInputMethodManager.hideSoftInputFromWindow(mSearchEdit.getWindowToken(), 0);
                 }
+            } else if (v.getId() == R.id.relate_tv) {
+                mHotTv.setTextColor(mActivity.getResources().getColor(R.color.f_text_gray));
+                mRelateTv.setTextColor(mActivity.getResources().getColor(R.color.f_text_style));
+                mResultList.clear();
+                mResultList.addAll(SearchResultListDAO.parseSearchResultListData(mActivity, mSearchKey));
+                mResultAdapter.notifyDataSetChanged();
+            } else if (v.getId() == R.id.hot_tv) {
+                mHotTv.setTextColor(mActivity.getResources().getColor(R.color.f_text_style));
+                mRelateTv.setTextColor(mActivity.getResources().getColor(R.color.f_text_gray));
+                mResultList.clear();
+                mResultAdapter.notifyDataSetChanged();
             }
         }
     };
+
+    private class MyWathcer implements TextWatcher {
+        private WeakReference<HomeFragment> mWeakReference;
+
+        private MyWathcer() {
+            mWeakReference = new WeakReference<>(HomeFragment.this);
+        }
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            HomeFragment fragment = mWeakReference.get();
+            mSearchKey = s.toString();
+            if (!TextUtils.isEmpty(s.toString())) {
+                fragment.mLayoutHis.setVisibility(View.GONE);
+                fragment.mLayoutSearchResult.setVisibility(View.VISIBLE);
+                mResultList = SearchResultListDAO.parseSearchResultListData(mActivity, s.toString());
+                mResultAdapter = new SearchResultAdapter(mActivity, mResultList, s.toString());
+                LinearLayoutManager manager = new LinearLayoutManager(mActivity);
+                mSearchResult.setLayoutManager(manager);
+                mSearchResult.setAdapter(mResultAdapter);
+            } else {
+                fragment.mLayoutHis.setVisibility(View.VISIBLE);
+                fragment.mLayoutSearchResult.setVisibility(View.GONE);
+            }
+
+        }
+    }
 }
