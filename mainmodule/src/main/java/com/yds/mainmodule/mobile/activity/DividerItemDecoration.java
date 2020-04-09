@@ -1,4 +1,4 @@
-package com.yds.mainmodule.mobile.views;
+package com.yds.mainmodule.mobile.activity;
 /*
  * Copyright (C) 2014 The Android Open Source Project
  *

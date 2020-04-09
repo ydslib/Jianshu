@@ -1,10 +1,13 @@
 package com.yds.mainmodule.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.PorterDuff;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,7 +21,9 @@ import com.yds.jianshulib.widget.CirCleImageView;
 import com.yds.jianshulib.widget.MultiImageView;
 import com.yds.mainmodule.R;
 import com.yds.mainmodule.bo.MakeListDataBO;
+import com.yds.mainmodule.mobile.activity.PhotoViewActivity;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -68,6 +73,17 @@ public class ArticleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             viewHolder.mReadNum.setText(mDataBOList.get(position).getReadNum()+" 阅读");
             viewHolder.mCommentNum.setText(mDataBOList.get(position).getCommentNum()+" 评论");
             viewHolder.mAwesomeNum.setText(mDataBOList.get(position).getAwesomeNum()+" 赞");
+            viewHolder.mImageView.setOnItemImageClickListener(new MultiImageView.OnItemImageClickListener() {
+                @Override
+                public void onItemImageClick(Context context, ImageView imageView, int index, List list) {
+                    Intent intent = new Intent(context, PhotoViewActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("imageUrlList", (Serializable) list);
+                    intent.putExtras(bundle);
+                    intent.putExtra("currentPosition", index);
+                    context.startActivity(intent);
+                }
+            });
         }
 
 

@@ -53,14 +53,18 @@ public class SearchResultAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             }
             int index = name.indexOf(mSearchKey);
             ForegroundColorSpan span = new ForegroundColorSpan(mContext.getResources().getColor(R.color.f_text_style));
-            builder.setSpan(span, index, index + mSearchKey.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            if (index>=0){
+                builder.setSpan(span, index, index + mSearchKey.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }
             viewHolder.articleName.setText(builder);
 
             builder = new SpannableStringBuilder();
             String content = bo.getContent();
             builder.append(content);
             index = content.indexOf(mSearchKey);
-            builder.setSpan(span, index, index + mSearchKey.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            if (index>=0){
+                builder.setSpan(span, index, index + mSearchKey.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }
             viewHolder.articleContent.setText(builder);
 
             viewHolder.articleAuthor.setText(bo.getAuthor());

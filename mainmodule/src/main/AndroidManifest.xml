@@ -18,14 +18,14 @@
             android:process=":one_pixel_service"
             ></service>
 
-        <activity android:name="com.yds.mainmodule.mobile.views.MainActivity">
+        <activity android:name="com.yds.mainmodule.mobile.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".mobile.views.TestActivity">
+        <activity android:name=".mobile.activity.TestActivity">
             <!--<intent-filter>-->
                 <!--<action android:name="android.intent.action.MAIN" />-->
 
@@ -38,6 +38,7 @@
             android:launchMode="singleTask"
             android:taskAffinity="com.yds.task"
             android:theme="@style/OnePixelActivity"></activity>
+        <activity android:name=".mobile.activity.PhotoViewActivity"/>
     </application>
 </manifest>
 

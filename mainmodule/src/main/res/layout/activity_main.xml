@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.yds.mainmodule.mobile.views.MainActivity">
+    tools:context="com.yds.mainmodule.mobile.activity.MainActivity">
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/bottom_tab_viewpager"

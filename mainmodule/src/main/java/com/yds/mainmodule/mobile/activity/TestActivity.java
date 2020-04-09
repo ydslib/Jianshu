@@ -1,4 +1,4 @@
-package com.yds.mainmodule.mobile.views;
+package com.yds.mainmodule.mobile.activity;
 
 /**
  * Created by yds
