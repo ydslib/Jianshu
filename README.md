@@ -36,7 +36,7 @@
 
 ![上拉加载更多](https://github.com/ydslib/Picture/blob/master/jianshu/makelist_02.jpg)
 
-![多图加载](https://github.com/ydslib/Picture/blob/master/jianshu/makelist_03.jpg)
-
 ![预览](https://github.com/ydslib/Picture/blob/master/jianshu/makelist.gif)
+
+![图片预览](https://github.com/ydslib/Picture/blob/master/jianshu/photoview.gif)
 
