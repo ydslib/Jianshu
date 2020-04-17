@@ -30,6 +30,10 @@ import android.widget.TextView;
 
 import com.yds.jianshulib.adapter.BaseTabFragmentPagerAdapter;
 import com.yds.jianshulib.widget.SearchBarLayout;
+import com.yds.jianshulib.widget.flowlayout.FlowLayout;
+import com.yds.jianshulib.widget.flowlayout.TagAdapter;
+import com.yds.jianshulib.widget.flowlayout.TagFlowLayout;
+import com.yds.jianshulib.widget.flowlayout.TagView;
 import com.yds.mainmodule.R;
 import com.yds.mainmodule.adapter.SearchRankAdapter;
 import com.yds.mainmodule.adapter.SearchResultAdapter;
@@ -56,6 +60,7 @@ public class HomeFragment extends Fragment {
     private SearchBarLayout mSearchBarLayout;
     private ImageView mBack;
     private EditText mSearchEdit;
+    private TagView mTagView;
     private InputMethodManager mInputMethodManager;
     private Activity mActivity;
     private RecyclerView mSearchRank;
@@ -64,6 +69,8 @@ public class HomeFragment extends Fragment {
     private LinearLayout mLayoutHis;
     private LinearLayout mLayoutSearchResult;
 
+    private TagFlowLayout mTagFlowLayout;
+    private List<String> mHisSearchTagList;
     private TextView mHotTv;
     private TextView mRelateTv;
     private List<SearchResultListBO> mResultList;
@@ -104,6 +111,32 @@ public class HomeFragment extends Fragment {
 
         MyWathcer myWathcer = new MyWathcer();
         mSearchEdit.addTextChangedListener(myWathcer);
+
+        mHisSearchTagList = new ArrayList<>();
+        mHisSearchTagList.add("测试");
+        mHisSearchTagList.add("管理");
+        mHisSearchTagList.add("RecyclerView");
+
+        mTagFlowLayout.setAdapter(new TagAdapter<String>(mHisSearchTagList) {
+            @Override
+            public View getView(FlowLayout parent, int position, String s) {
+                TextView tv = (TextView) LayoutInflater.from(mActivity).inflate(R.layout.flowlayout_adapter_text, parent, false);
+                tv.setText(s);
+                return tv;
+            }
+        });
+
+        mTagFlowLayout.setOnTagClickListener(new TagFlowLayout.OnTagClickListener() {
+            @Override
+            public boolean onTagClick(View view, int position, FlowLayout parent) {
+                mTagView = (TagView) view;
+                if (mTagView.isChecked()) {
+                    mSearchEdit.setText(mHisSearchTagList.get(position));
+                    mSearchEdit.setSelection(mHisSearchTagList.get(position).length());
+                }
+                return true;
+            }
+        });
     }
 
     private void initView(View view) {
@@ -120,6 +153,7 @@ public class HomeFragment extends Fragment {
         mLayoutSearchResult = view.findViewById(R.id.search_result_ll);
         mRelateTv = view.findViewById(R.id.relate_tv);
         mHotTv = view.findViewById(R.id.hot_tv);
+        mTagFlowLayout = view.findViewById(R.id.tag_flow_layout);
 
         mTabLayout.addTab(mTabLayout.newTab().setText("打榜"));
         mTabLayout.addTab(mTabLayout.newTab().setText("推荐"));
@@ -166,6 +200,9 @@ public class HomeFragment extends Fragment {
                 if (mInputMethodManager != null) {
                     mInputMethodManager.hideSoftInputFromWindow(mSearchEdit.getWindowToken(), 0);
                 }
+                if (mTagView != null) {
+                    mTagView.setChecked(false);
+                }
             } else if (v.getId() == R.id.relate_tv) {
                 mHotTv.setTextColor(mActivity.getResources().getColor(R.color.f_text_gray));
                 mRelateTv.setTextColor(mActivity.getResources().getColor(R.color.f_text_style));
@@ -210,6 +247,9 @@ public class HomeFragment extends Fragment {
                 mSearchResult.setLayoutManager(manager);
                 mSearchResult.setAdapter(mResultAdapter);
             } else {
+                if (mTagView != null) {
+                    mTagView.setChecked(false);
+                }
                 fragment.mLayoutHis.setVisibility(View.VISIBLE);
                 fragment.mLayoutSearchResult.setVisibility(View.GONE);
             }

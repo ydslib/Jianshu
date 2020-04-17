@@ -1,4 +1,4 @@
-package com.yds.jianshulib.widget;
+package com.yds.jianshulib.widget.multiimageview;
 
 import android.content.Context;
 import android.content.res.TypedArray;

@@ -22,9 +22,11 @@ public class SearchRankDAO {
         List<SearchRankBO> list = new ArrayList<>();
         String result = AssetsUtils.getJson(context,FILE_NAME);
         JSONArray searchArray = JSON.parseArray(result);
+        SearchRankBO bo;
+        JSONObject obj;
         for (int i=0;i<searchArray.size();i++){
-            SearchRankBO bo = new SearchRankBO();
-            JSONObject obj = searchArray.getJSONObject(i);
+            bo = new SearchRankBO();
+            obj = searchArray.getJSONObject(i);
             bo.setRankIndex(obj.getString("index"));
             bo.setSearchText(obj.getString("searchText"));
             bo.setReadNum(obj.getString("readNum"));

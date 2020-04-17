@@ -35,9 +35,14 @@ public class MakeListDataDAO {
         List<MakeListDataBO> dataBOList = new ArrayList<>();
         String result = AssetsUtils.getJson(context, FILE_NAME);
         JSONArray array = JSON.parseArray(result);
+        MakeListDataBO dataBO;
+        JSONObject obj;
+        JSONArray jsonArray;
+        List<String> list;
+        JSONObject imgObj;
         for (int j = 0; j < array.size(); j++) {
-            MakeListDataBO dataBO = new MakeListDataBO();
-            JSONObject obj = array.getJSONObject(j);
+            dataBO = new MakeListDataBO();
+            obj = array.getJSONObject(j);
             dataBO.setHeadUrl(obj.getString("head_url"));
             dataBO.setUserName(obj.getString("name"));
             dataBO.setTime(obj.getString("time"));
@@ -49,10 +54,10 @@ public class MakeListDataDAO {
             dataBO.setJevelNum(obj.getString("jevel_num"));
             int commentNum = obj.getInteger("comment_num");
             dataBO.setCommentNum(commentNum >= 1000 ? commentNum / 1000.0f + "k" : String.valueOf(commentNum));
-            JSONArray jsonArray = obj.getJSONArray("image_list");
-            List<String> list = new ArrayList<>();
+            jsonArray = obj.getJSONArray("image_list");
+            list = new ArrayList<>();
             for (int i = 0; i < jsonArray.size(); i++) {
-                JSONObject imgObj = jsonArray.getJSONObject(i);
+                imgObj = jsonArray.getJSONObject(i);
                 list.add(imgObj.getString("image_url"));
             }
             dataBO.setList(list);

@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.yds.jianshulib.itf.OnLoadMoreListener;
 import com.yds.jianshulib.widget.CirCleImageView;
-import com.yds.jianshulib.widget.MultiImageView;
+import com.yds.jianshulib.widget.multiimageview.MultiImageView;
 import com.yds.mainmodule.R;
 import com.yds.mainmodule.bo.MakeListDataBO;
 import com.yds.mainmodule.mobile.activity.PhotoViewActivity;

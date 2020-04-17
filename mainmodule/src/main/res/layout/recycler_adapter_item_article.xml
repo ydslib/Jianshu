@@ -61,7 +61,7 @@
         <!--&gt;-->
     <!--</androidx.recyclerview.widget.RecyclerView>-->
 
-    <com.yds.jianshulib.widget.MultiImageView
+    <com.yds.jianshulib.widget.multiimageview.MultiImageView
         android:id="@+id/image_three"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

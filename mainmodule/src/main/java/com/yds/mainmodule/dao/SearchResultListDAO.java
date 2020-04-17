@@ -21,10 +21,13 @@ public class SearchResultListDAO {
         List<SearchResultListBO> list = new ArrayList<>();
         String result = AssetsUtils.getJson(context,FILE_NAME);
         JSONArray searchArray = JSON.parseArray(result);
+        String name;
+        JSONObject obj;
+        SearchResultListBO bo;
         for(int i=0;i<searchArray.size();i++){
-            SearchResultListBO bo = new SearchResultListBO();
-            JSONObject obj = searchArray.getJSONObject(i);
-            String name = obj.getString("name");
+            bo = new SearchResultListBO();
+            obj = searchArray.getJSONObject(i);
+            name = obj.getString("name");
             if (name.contains(searchKey)){
                 bo.setName(name);
                 bo.setContent(obj.getString("content"));

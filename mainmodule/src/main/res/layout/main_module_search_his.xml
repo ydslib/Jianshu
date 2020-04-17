@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/search_his"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:id="@+id/search_his">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,37 +35,38 @@
             android:textColor="#A2A2A2" />
     </LinearLayout>
 
-    <com.yds.jianshulib.widget.FlowLayout
+    <com.yds.jianshulib.widget.flowlayout.TagFlowLayout
+        android:id="@+id/tag_flow_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="5dp">
+        android:background="@drawable/selector_flow_layout"
+        android:padding="10dp"
+        app:max_select="-1">
 
-        <TextView
-            style="@style/search_flow_layout_text"
-            android:text="welcome" />
+        <!--<TextView-->
+        <!--style="@style/search_flow_layout_text"-->
+        <!--android:text="welcome" />-->
 
-        <TextView
-            style="@style/search_flow_layout_text"
-            android:text="测试" />
+        <!--<TextView-->
+        <!--style="@style/search_flow_layout_text"-->
+        <!--android:text="测试" />-->
 
-        <TextView
-            style="@style/search_flow_layout_text"
-            android:text="查找ViewHolder" />
+        <!--<TextView-->
+        <!--style="@style/search_flow_layout_text"-->
+        <!--android:text="查找ViewHolder" />-->
 
-        <TextView
-            style="@style/search_flow_layout_text"
-            android:text="快速查找" />
+        <!--<TextView-->
+        <!--style="@style/search_flow_layout_text"-->
+        <!--android:text="快速查找" />-->
 
-        <TextView
-            style="@style/search_flow_layout_text"
-            android:text="线程" />
+        <!--<TextView-->
+        <!--style="@style/search_flow_layout_text"-->
+        <!--android:text="线程" />-->
 
-        <TextView
-            style="@style/search_flow_layout_text"
-            android:text="多线程" />
-    </com.yds.jianshulib.widget.FlowLayout>
+        <!--<TextView-->
+        <!--style="@style/search_flow_layout_text"-->
+        <!--android:text="多线程" />-->
+    </com.yds.jianshulib.widget.flowlayout.TagFlowLayout>
 
     <View
         android:layout_width="match_parent"
